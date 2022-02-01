@@ -7,7 +7,7 @@ baxter's essential colour tools™, is still being developed and is not yet comp
 
 ## 🚀 Website
 
-baxter's essential colour tools™ can be found [here!](https://baxttter.github.io/colourtools/ "baxter's essential colour tools™")
+baxter's essential colour tools™ can be found [here!](https://baxttter.github.io/baxtersessentialcolourtools/ "baxter's essential colour tools™")
 
 ## ⭐️ Features
 
@@ -29,6 +29,6 @@ baxter's essential colour tools™ can be found [here!](https://baxttter.github.
 
 ## 🚨 Issues
 
-If you have found any issues, please submit an issue [here.](https://github.com/baxttter/colourtools/issues "Submit a issue")
+If you have found any issues, please submit an issue [here.](https://github.com/baxttter/baxtersessentialcolourtools/issues "Submit a issue")
 
 Feel free to create a pull request if you feel that baxter's essential colour tools™ could use a extra feature you've created!
