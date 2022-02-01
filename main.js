@@ -26,12 +26,12 @@ $(document).ready(function(){
   	if (val.charAt(0) != "#") {
   		val = "#" + val;
   		$("#hex-box").val(val);
-  	};
+  	}
 
   	// Only allow 6 characters (and 1 character for hash)
   	if (val.length >= 7) {
   		$("#hex-box").val(val.slice(0,7));
-  	};
+  	}
 
   	// Whole hex value
   	if (val.length == 7) {
@@ -77,7 +77,7 @@ $(document).ready(function(){
   $("#hex-box").on("blur", function(){
   	if ($("#hex-box").val() == "#") {
   		$("#hex-box").val("");
-  	};
+  	}
   });
 
 
@@ -106,11 +106,11 @@ $(document).ready(function(){
   	for (i = 0; i < 3; i++) {
 			if ($(rbgArray[i]).val().length > 3) {
 				$(rbgArray[i]).val($(rbgArray[i]).val().slice(0,3));
-			};
-			if ($(rbgArray[i]).val() >= 225) {
-					$(rbgArray[i]).val(225);
-			};
-		};
+			}
+			if ($(rbgArray[i]).val() >= 255) {
+					$(rbgArray[i]).val(255);
+			}
+		}
 
 		// Check every value is filled out
 	  if ($("#red-box").val() && $("#green-box").val() && $("#blue-box").val()) {
@@ -137,13 +137,59 @@ $(document).ready(function(){
 	    $(".selection-rgb-box").css("outline-color", rgb);
 	    $("#black-or-white").css("font-size", 40);
 	    $("#black-or-white").css("font-weight", "bold");
-		};
+	    $("#pallet-box-brightness").css("background", ("linear-gradient(90deg, rgba(0,0,0,1) 0%, " + rgb + " 50%, rgba(225,225,225,1) 100%)"));
+
+	  }
+	  
+	  // ------------ R G B ------------- //
+	  $("#pallet-box").on("change", function(){
+	  	alert("jey");
+	  });
+
 	});
 
-  // ------------ R G B ------------- //
-  $("#pallet-box").on("change", function(){
-  	alert("jey");
-  });
+
+  var canvas = document.getElementById('pallet-box-rainbow');
+	var ctx = canvas.getContext('2d');
+
+	// Create a linear gradient
+	// The start gradient point is at x=20, y=0
+	// The end gradient point is at x=220, y=0
+	var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+	// Add three color stops
+	gradient.addColorStop(0.0, "rgba(255,0,0,1)");
+	gradient.addColorStop(0.1, "rgba(255,154,0,1)");
+	gradient.addColorStop(0.2, "rgba(208,222,33,1)");
+	gradient.addColorStop(0.3, "rgba(79,220,74,1)");
+	gradient.addColorStop(0.4, "rgba(63,218,216,1)");
+	gradient.addColorStop(0.5, "rgba(47,201,226,1)");
+	gradient.addColorStop(0.6, "rgba(28,127,238,1)");
+	gradient.addColorStop(0.7, "rgba(95,21,242,1)");
+	gradient.addColorStop(0.8, "rgba(186,12,248,1)");
+	gradient.addColorStop(0.9, "rgba(251,7,217,1)");
+	gradient.addColorStop(1.0, "rgba(255,0,0,1)");
+
+	// Set the fill style and draw a rectangle
+	ctx.fillStyle = gradient;
+	ctx.fillRect(0, 0, canvas.width, 150);
+
+	$("#pallet-box-rainbow").mousemove(function(e){
+    var pos = findPos(this);
+    var x = (e.pageX - pos.x) / 2;
+    var y = (e.pageY - pos.y) / 2;
+    var coord = "x=" + x + ", y=" + y;
+    var c = this.getContext('2d');
+    var p = c.getImageData(x, y, 1, 1).data; 
+    //var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+    var rgb = "rgb(" + p[0] + ", " + p[1] + ", " + p[2] + ")";
+    $("#red-box").val(p[0]);e
+	  $("#green-box").val(p[1]);
+	  $("#blue-box").val(p[2]);
+	  $(".selection-rgb-box").trigger("click");
+	  console.log(x);
+	});
+
 });
 
 
@@ -174,12 +220,21 @@ function rgbToHex(rgb) {
         hex = "0" + hex;
     }
     return hex;
-};
+}
 
-// Hide/Show scroll bar 
-// Scrolling
-
-
+// Get Color from slider | From https://stackoverflow.com/a/6736135/16982236
+function findPos(obj) {
+    var curleft = 0, curtop = 0;
+    if (obj.offsetParent) {
+    		console.log(obj.offsetParent);
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return { x: curleft, y: curtop };
+    }
+    return undefined;
+}
 
 
 
