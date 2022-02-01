@@ -140,7 +140,10 @@ $(document).ready(function(){
 		};
 	});
 
-
+  // ------------ R G B ------------- //
+  $("#pallet-box").on("change", function(){
+  	alert("jey");
+  });
 });
 
 
@@ -172,6 +175,12 @@ function rgbToHex(rgb) {
     }
     return hex;
 };
+
+// Hide/Show scroll bar 
+// Scrolling
+
+
+
 
 
 
