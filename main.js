@@ -110,13 +110,17 @@ $(document).ready(function() {
 			$("#color-container").data('clicked', true);
 
 			updateColorSlider();
+		},
+		touchstart: function() {
+			$("#color-container").data('clicked', true);
+
+			updateColorSlider();			
 		}
     });
 
     $(document).on({
         mouseup: function() {
             $("#color-container").data('clicked', false);
-            //console.log(pickerXPer);
         },
 
         mousemove: function() {
@@ -124,6 +128,21 @@ $(document).ready(function() {
             	
             	updateColorSlider();
             }
+        },
+
+        touchmove: function() {
+            if ($("#color-container").data('clicked')) {
+            	
+            	updateColorSlider();
+            }
+        },
+
+        touchend: function() {
+			$("#color-container").data('clicked', false);
+        },
+
+        touchcancel: function() {
+        	$("#color-container").data('clicked', false);
         }
     });
 
