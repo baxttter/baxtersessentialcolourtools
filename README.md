@@ -18,10 +18,10 @@ baxter's essential colour tools™ can be found [here!](https://baxttter.github.
 + RGB to HEX
 + HEX to RGB
 + Should my text be black or white?
++ Color Picker Support
 
 #### 📝 Planned
 
-+ Color Picker Support
 + Image Support
   + Average Color of Image
 + Color Pallete Generator
