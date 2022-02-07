@@ -15,7 +15,17 @@ var pickerYPerInverse = 100;
 // Called when page is loaded
 $(document).ready(function() {
 
+	// Add Rainbow Slider Background
+	var rainbowString = "linear-gradient(90deg, "
+	for (i = 0; i < 360; i++) {
+		let percentage = (i / 360) * 100;
+		rainbowString += "hsl(" + i + ", 100%, 50%) " + percentage + "%, ";
+	}
 
+	rainbowString = rainbowString.substring(0, rainbowString.length - 2);
+	rainbowString += ")"
+	$("#rainbow-container").css("background", rainbowString);
+	
 	// ------------ H E X ------------- //
   	$("#hex-box").on("input click", function() {
 
