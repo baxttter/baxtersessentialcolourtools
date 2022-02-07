@@ -15,7 +15,7 @@
 <html>
 <head>
 	<title>baxter's essential colour tools™</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 
@@ -31,6 +31,25 @@
   font-family: system-ui, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.noSelect {
+  text-decoration: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -khtml-user-drag: none;
+  -khtml-user-select: none;
+  -moz-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-drag: none;
+  -ms-user-select: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  standard-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: default;
 }
 
 html {
@@ -53,10 +72,9 @@ body {
 	width: calc(100% - 50px);
 	height: 75px;
 	text-align: center;
-	outline: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(225, 225, 225, 0.3);
 	border-radius: 7px;
 	background-color: black;
-	border: none;
 	color: white;
 	font: inherit;
 	font-size: 30px;
@@ -67,10 +85,9 @@ body {
 
 .selection-rgb-box {
 	text-align: center;
-	outline: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(225, 225, 225, 0.3);
 	border-radius: 7px;
 	background-color: black;
-	border: none;
 	color: white;
 	font: inherit;
 	font-size: 30px;
@@ -136,7 +153,7 @@ body {
 }
 
 #text-color {
-	outline: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(225, 225, 225, 0.3);
 }
 
 .final-color {
@@ -253,17 +270,17 @@ body::-webkit-scrollbar-thumb {
 <body>
 	<div id="center-container">
 		<div id="center-area">
-			<p id="header">baxter's essential colour tools™</p>
+			<p id="header" class="noSelect">baxter's essential colour tools™</p>
 			<br/><br/><br/>
 
 			<input id="hex-box" class="selection-box" type="text" placeholder="enter a hex code"></input>
-			<p class="else-text">or</p>
+			<p class="else-text noSelect">or</p>
 			<div id="rgb-box">
 				<input id="red-box" class="selection-rgb-box" type="number" placeholder="red"></input>
 				<input id="green-box" class="selection-rgb-box" type="number" placeholder="green"></input>
 				<input id="blue-box" class="selection-rgb-box" type="number" placeholder="blue"></input>
 			</div>
-			<p class="else-text">or</p>
+			<p class="else-text noSelect">or</p>
 			<div id="pallet-box" class="selection-box">
 				<input type="range" step="1" min="0" max="360" value="0" id="rainbow-slider"></input>
 				<div id="color-container">
@@ -274,9 +291,9 @@ body::-webkit-scrollbar-thumb {
 				</div>
 			</div>
 			<br/><br/><br/>
-			<p class="step-title">your text colour should be</p>
+			<p class="step-title noSelect">your text colour should be</p>
 			<br/>
-			<div class="result-box" id="text-color">
+			<div class="result-box noSelect" id="text-color">
 				<p class="final-color" id="black-or-white">no colour selected</p>
 			</div>
 			<br/><br/><br/><br/>
@@ -284,7 +301,7 @@ body::-webkit-scrollbar-thumb {
 	</div>
 
 <div id="footer">
-	<div id="footer-center-area">
+	<div id="footer-center-area noSelect">
 		<p class="footer-text">Copyright © 2022 Baxter Kemp</p>
 		<p class="footer-text" style="padding-top: 10px;">All rights reserved.</p>
 		<p class="footer-text" style="padding-top: 20px;">v1.0</p>

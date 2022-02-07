@@ -107,10 +107,19 @@ $(document).ready(function() {
 
 	$("#color-container").on({
 		mousedown: function() {
+			$("*").css("user-drag", "none");
+			$("*").css("user-select", "none");
+			$("*").css("standard-user-select", "none");
+			$("*").css("-webkit-touch-callout", "none");
+			$("*").css("-webkit-tap-highlight-color", "none");
+			$("*").css("-webkit-tap-highlight-color", "none");
+			$("*").data('cursor', "pointer");
+
 			$("#color-container").data('clicked', true);
 
 			updateColorSlider();
 		},
+		// Mobile Support
 		touchstart: function() {
 			$("#color-container").data('clicked', true);
 
@@ -121,6 +130,13 @@ $(document).ready(function() {
     $(document).on({
         mouseup: function() {
             $("#color-container").data('clicked', false);
+
+			$("*").css("user-drag", "");
+			$("*").css("user-select", "");
+			$("*").css("standard-user-select", "");
+			$("*").css("-webkit-touch-callout", "");
+			$("*").css("-webkit-tap-highlight-color", "");
+			$("*").data('cursor', "default");
         },
 
         mousemove: function() {
@@ -130,6 +146,7 @@ $(document).ready(function() {
             }
         },
 
+        // Mobile Support
         touchmove: function() {
             if ($("#color-container").data('clicked')) {
             	
@@ -209,9 +226,9 @@ function updateColorSlider() {
 // Update Color Highlights
 function updateHighlights(colour) {
 	$("#text-color").css("background-color", colour);
-	$("#text-color").css("outline-color", colour);
-	$(".selection-box").css("outline-color", colour);
-	$(".selection-rgb-box").css("outline-color", colour);
+	$("#text-color").css("border-color", colour);
+	$(".selection-box").css("border-color", colour);
+	$(".selection-rgb-box").css("border-color", colour);
 	$("#black-or-white").css("font-size", 40);
 	$("#black-or-white").css("font-weight", "bold");
 	$("#color-picker").css("background-color", colour);
