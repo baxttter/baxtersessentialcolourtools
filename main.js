@@ -15,9 +15,10 @@ var pickerYPerInverse = 100;
 // Called when page is loaded
 $(document).ready(function() {
 
-	
+	// Move Cursor to right at start
 	$("#color-picker").css("transform", "translateX(" + ($("#color-container").width() - 20) + "px)");
 	$("#color-picker").css("background-color", "red");
+
 	// ------------ H E X ------------- //
   	$("#hex-box").on("input", function(event) {
 
@@ -51,7 +52,7 @@ $(document).ready(function() {
 
 
   	});
-  	
+
   	// Hex Box nothing typed, remove hash and revert to HTML placeholder text
   	$("#hex-box").on("blur", function() {
   		if ($("#hex-box").val() == "#") {
@@ -218,7 +219,7 @@ function updateColorSlider() {
 
 	// Convert HSV to RGB
 	var rgb = hsv2rgb($("#rainbow-slider").val(), (pickerXPer / 100), (pickerYPerInverse / 100));
-	//console.log(pickerXPer);
+
 	// Update
 	updateHighlights("rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")");
 	updateValues(rgb, "RGB");
@@ -279,24 +280,8 @@ function updateValues(colour, type) {
     var rgbArray = hslTorgb($("#rainbow-slider").val(), 1, 0.5);
     var rgb = "rgb(" + rgbArray[0] + ", " + rgbArray[1] + ", " + rgbArray[2] + ")";
 	$("#color-hue").css("background", rgb);
-
-    //console.log(rgb2hsv(red, green, blue)[1] * 100);
-
-    //console.log();
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -406,22 +391,6 @@ function rgb2hsv (r, g, b) {
         s: percentRoundFn(s * 100),
         v: percentRoundFn(v * 100)
     };
-}
-
-
-
-// Get Color from slider | From https://stackoverflow.com/a/6736135/16982236
-function findPos(obj) {
-    var curleft = 0, curtop = 0;
-    if (obj.offsetParent) {
-    		console.log(obj.offsetParent);
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return { x: curleft, y: curtop };
-    }
-    return undefined;
 }
 
 
