@@ -5,9 +5,11 @@ A simple web application that contains many of Baxter's colour tools that he thi
 
 baxter's essential colour tools™, is still being developed and is not yet complete...
 
-## 🚀 Website
+## 🚀 Demo
 
 baxter's essential colour tools™ can be found [here!](https://baxttter.github.io/baxtersessentialcolourtools/ "baxter's essential colour tools™")
+
+It is also possible to package baxter's essential colour tools™ as an electron app!
 
 ## ⭐️ Features
 
