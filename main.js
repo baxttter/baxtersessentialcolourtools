@@ -51,14 +51,7 @@ $(document).ready(function() {
 
 
   	});
-
-  	// Select Text when HEX filled out
-  	$("#hex-box").on("click", function() {
-  		if ($("#hex-box").val().length == 7) {
-  			$("#hex-box").select();
-	  	}
-  	});
-
+  	
   	// Hex Box nothing typed, remove hash and revert to HTML placeholder text
   	$("#hex-box").on("blur", function() {
   		if ($("#hex-box").val() == "#") {

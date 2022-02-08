@@ -73,7 +73,7 @@ body {
 	height: 75px;
 	text-align: center;
 	border: 3px solid rgba(225, 225, 225, 0.3);
-	border-radius: 7px;
+	border-radius: 14px;
 	background-color: black;
 	color: white;
 	font: inherit;
@@ -86,7 +86,7 @@ body {
 .selection-rgb-box {
 	text-align: center;
 	border: 3px solid rgba(225, 225, 225, 0.3);
-	border-radius: 7px;
+	border-radius: 14px;
 	background-color: black;
 	color: white;
 	font: inherit;
@@ -95,6 +95,7 @@ body {
 	font-weight: 500;
 	cursor: text;
 	width: calc(33% - 10px);
+	height: 75px;
 }
 
 #rgb-box {
@@ -147,7 +148,7 @@ body {
 
 .result-box {
 	width: calc(100% - 50px);
-	border-radius: 7px;
+	border-radius: 14px;
 	overflow: hidden;
 	height: 77px;
 }
@@ -212,7 +213,7 @@ body::-webkit-scrollbar-thumb {
 	-webkit-appearance: none;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 }
 
@@ -230,7 +231,7 @@ body::-webkit-scrollbar-thumb {
 	height: 125px;
   display: grid;
   grid-template-columns: 1fr;
-  border-radius: 3px;
+  border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -258,27 +259,55 @@ body::-webkit-scrollbar-thumb {
 #color-picker {
 	width: 20px;
 	height: 20px;
-	border-radius: 20px;
-	border: 2px solid rgba(225, 225, 225, 1);
+	border-radius: 5px;
+	border: 2.5px solid rgba(225, 225, 225, 1);
 	background-color: white;
 	position: absolute;
 	cursor: pointer;
 	transform: translateX(100% - 20px);
 	box-sizing: border-box;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+}
+
+input:focus {
+	background-color: rgba(255, 255, 255, 0.1);
+	outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none; 
+	width: 28px;
+	height: 55px;
+	margin-right: 11px;
+	opacity: 1;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border: 3px solid rgba(225, 225, 225, 0.3);
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background-image: url("arrows.svg");
+	background-position: center;
+	background-size: cover;
 }
 
 input[type=range]::-webkit-slider-thumb {
 	height: 40px;
 	width: 15px;
-	border-radius: 20px;
-	border: 2px solid rgba(255, 255, 255, 1);
+	border-radius: 5px;
+	border: 2.5px solid rgba(225, 225, 225, 1);
 	box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 	-webkit-appearance: none;
 }
+
+
 
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
@@ -300,9 +329,9 @@ input[type=range]::-webkit-slider-runnable-track {
 			<input id="hex-box" class="selection-box" type="text" placeholder="enter a hex code"></input>
 			<p class="else-text noSelect">or</p>
 			<div id="rgb-box">
-				<input id="red-box" class="selection-rgb-box" type="number" placeholder="red"></input>
-				<input id="green-box" class="selection-rgb-box" type="number" placeholder="green"></input>
-				<input id="blue-box" class="selection-rgb-box" type="number" placeholder="blue"></input>
+				<input id="red-box" min="0" class="selection-rgb-box" type="number" placeholder="red"></input>
+				<input id="green-box" min="0" class="selection-rgb-box" type="number" placeholder="green"></input>
+				<input id="blue-box" min="0" class="selection-rgb-box" type="number" placeholder="blue"></input>
 			</div>
 			<p class="else-text noSelect">or</p>
 			<div id="pallet-box" class="selection-box">

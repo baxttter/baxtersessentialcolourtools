@@ -8,7 +8,7 @@ function createWindow () {
     height: 700,
     minWidth: 550,
     minHeight: 600,
-    titleBarStyle: "hiddenInset"
+    titleBarStyle: "default"
   })
 
   win.loadFile('index.html')
