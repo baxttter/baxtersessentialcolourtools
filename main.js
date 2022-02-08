@@ -8,26 +8,18 @@
 //
 
 
-var pickerXPer = 0;
+var pickerXPer = 100;
 var pickerYPer = 0;
 var pickerYPerInverse = 100;
 
 // Called when page is loaded
 $(document).ready(function() {
 
-	// Add Rainbow Slider Background
-	var rainbowString = "linear-gradient(90deg, "
-	for (i = 0; i < 360; i++) {
-		let percentage = (i / 360) * 100;
-		rainbowString += "hsl(" + i + ", 100%, 50%) " + percentage + "%, ";
-	}
-
-	rainbowString = rainbowString.substring(0, rainbowString.length - 2);
-	rainbowString += ")"
-	$("#rainbow-container").css("background", rainbowString);
 	
+	$("#color-picker").css("transform", "translateX(" + ($("#color-container").width() - 20) + "px)");
+	$("#color-picker").css("background-color", "red");
 	// ------------ H E X ------------- //
-  	$("#hex-box").on("input click", function() {
+  	$("#hex-box").on("input", function(event) {
 
 	  	// Don't allow special characters
 	  	$("#hex-box").val(function(i, v) {
@@ -44,7 +36,7 @@ $(document).ready(function() {
 	  	// Only allow 6 characters (and 1 character for hash)
 	  	if (val.length >= 7) {
 	  		$("#hex-box").val(val.slice(0,7));
-	  	}
+	  	}                  
 
 	  	// Whole hex value
 	  	if (val.length == 7) {
@@ -56,8 +48,15 @@ $(document).ready(function() {
 		    updateHighlights($("#hex-box").val());
 		    updateValues($("#hex-box").val(), "HEX");
 	  	}
-                           
 
+
+  	});
+
+  	// Select Text when HEX filled out
+  	$("#hex-box").on("click", function() {
+  		if ($("#hex-box").val().length == 7) {
+  			$("#hex-box").select();
+	  	}
   	});
 
   	// Hex Box nothing typed, remove hash and revert to HTML placeholder text

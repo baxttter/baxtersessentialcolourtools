@@ -1,9 +1,14 @@
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
-const createWindow = () => {
+function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600
+    backgroundColor: '#000000',
+    width: 1000,
+    height: 700,
+    minWidth: 550,
+    minHeight: 600,
+    titleBarStyle: "hiddenInset"
   })
 
   win.loadFile('index.html')
@@ -11,4 +16,16 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow()
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow()
+    }
+  })
+})
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
