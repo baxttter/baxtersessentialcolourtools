@@ -119,13 +119,11 @@ $(document).ready(function() {
 			$("*").data('cursor', "pointer");
 
 			$("#color-container").data('clicked', true);
-			disableScroll();
 			updateColorSlider();
 		},
 		// Mobile Support
 		touchstart: function() {
 			$("#color-container").data('clicked', true);
-			disableScroll();
 			updateColorSlider();			
 		}
     });
@@ -133,7 +131,6 @@ $(document).ready(function() {
     $(document).on({
         mouseup: function() {
             $("#color-container").data('clicked', false);
-            enableScroll();
 
 			$("*").css("user-drag", "");
 			$("*").css("user-select", "");
@@ -145,7 +142,6 @@ $(document).ready(function() {
 
         mousemove: function() {
             if ($("#color-container").data('clicked')) {
-            	disableScroll();
             	updateColorSlider();
             }
         },
@@ -153,39 +149,20 @@ $(document).ready(function() {
         // Mobile Support
         touchmove: function() {
             if ($("#color-container").data('clicked')) {
-            	disableScroll();
             	updateColorSlider();
             }
         },
 
         touchend: function() {
 			$("#color-container").data('clicked', false);
-			enableScroll();
         },
 
         touchcancel: function() {
         	$("#color-container").data('clicked', false);
-        	enableScroll();
         }
     });
 
 });
-
-// From https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/
-function disableScroll() {
-    // Get the current page scroll position
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-  
-        // if any scroll is attempted, set this to the previous value
-        window.onscroll = function() {
-            window.scrollTo(scrollLeft, scrollTop);
-        };
-}
-  
-function enableScroll() {
-    window.onscroll = function() {};
-}
 
 // Color Pallet Generator 
 function generateColorPalette(red, green, blue) {
