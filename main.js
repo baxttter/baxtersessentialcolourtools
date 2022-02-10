@@ -168,6 +168,31 @@ $(document).ready(function() {
 
 });
 
+// Color Pallet Generator 
+function generateColorPalette(red, green, blue) {
+	var HSL = rgbToHsl(red, green, blue); // Returns array
+	console.log(HSL)
+
+	// Get Full Range of Lightness
+	var fullArray = [];
+	for (i = Math.round(HSL[2] * 100); i < 100; i+=10) {
+		fullArray.push(i);
+	}
+	for (i = Math.round(HSL[2] * 100) - 10; i > 0; i-=10) {
+		fullArray.unshift(i);
+	}
+
+	// Display Color Palette
+	var colorPalette = [0, 10, 30, 50, 70, 90];
+	for (i = 1; i < 6; i++) {
+		if (Math.ceil(HSL[1] * 100) > 80) {
+			$("#color-box-" + i).css("background", "hsl(" + $("#rainbow-slider").val() + ", " + (Math.ceil(HSL[1] * 100) - 15) + "%, " + colorPalette[i] + "%)");
+		} else {
+			$("#color-box-" + i).css("background", "hsl(" + $("#rainbow-slider").val() + ", " + Math.ceil(HSL[1] * 100) + "%, " + colorPalette[i] + "%)");
+		}
+	}
+}
+
 // Convert HEX/RGB to colour picker
 function convertToColorPicker(red, green, blue) { // Takes RGB colours
 
@@ -252,7 +277,7 @@ function updateValues(colour, type) {
 		blue = colour[2];
 	}
 
-
+	generateColorPalette(red, green, blue);
 
   	// Calculate Luminosity from RGB values
     var luminosity = (((0.299 * red) + (0.587 * green) + (0.114 * blue)) / 255);
