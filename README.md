@@ -21,12 +21,12 @@ It is also possible to package *baxter's essential colour tools™* as an electr
 + HEX to RGB
 + Should my text be black or white?
 + Color Picker Support
++ Color Pallete Generator
 
 #### 📝 Planned
 
 + Image Support
   + Average Color of Image
-+ Color Pallete Generator
 + Does my colour work in dark mode?
 
 ## 🚨 Issues
