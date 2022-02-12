@@ -58,7 +58,7 @@ body {
 	width: calc(100% - 50px);
 	height: 75px;
 	text-align: center;
-	border: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(255, 255, 255, 0.3);
 	border-radius: 14px;
 	background-color: black;
 	color: white;
@@ -71,7 +71,7 @@ body {
 
 .selection-rgb-box {
 	text-align: center;
-	border: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(255, 255, 255, 0.3);
 	border-radius: 14px;
 	background-color: black;
 	color: white;
@@ -117,7 +117,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	border-top: 2px solid rgba(225, 225, 225, 0.3);
+	border-top: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .step {
@@ -140,7 +140,7 @@ body {
 }
 
 #text-color {
-	border: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .final-color {
@@ -164,7 +164,7 @@ body {
 }
 
 .footer-text {
-	color: rgba(225, 225, 225, 0.3);
+	color: rgba(255, 255, 255, 0.3);
 }
 
 .else-text {
@@ -272,7 +272,7 @@ input[type=number]::-webkit-inner-spin-button {
 	border-bottom-left-radius: 6px;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
-	border: 3px solid rgba(225, 225, 225, 0.3);
+	border: 3px solid rgba(255, 255, 255, 0.3);
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	background-image: url("arrows.svg");
@@ -281,7 +281,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number]::-webkit-inner-spin-button:hover {
-	background-color: rgba(225, 225, 225, 0.1);
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -315,5 +315,25 @@ input[type=range]::-webkit-slider-runnable-track {
 
 }
 
+#dropper-box {
+	width: calc(100% - 50px);
+	height: 81px;
+	text-align: center;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-radius: 14px;
+	background-color: black;
+	color: rgba(117, 117, 117, 1);
+	font: inherit;
+	font-size: 30px;
+	text-decoration: none;
+	font-weight: 500;
+	cursor: pointer;
+	align-items: unset;
+}
+
+#dropper-box:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: rgba(255, 255, 255, 0.6);
+}
 
 

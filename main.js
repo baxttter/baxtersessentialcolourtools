@@ -167,7 +167,6 @@ $(document).ready(function() {
 // Color Pallet Generator 
 function generateColorPalette(red, green, blue) {
 	var HSL = rgbToHsl(red, green, blue); // Returns array
-	console.log(HSL)
 
 	// Get Full Range of Lightness
 	var fullArray = [];
@@ -257,6 +256,8 @@ function updateHighlights(colour) {
 	$("#black-or-white").css("font-size", 40);
 	$("#black-or-white").css("font-weight", "bold");
 	$("#color-picker").css("background-color", colour);
+	$("#dropper-box").css("border-color", colour);
+	$("#dropper-box").css("color", "white");
 }
 
 // Update Color Values
@@ -304,6 +305,41 @@ function updateValues(colour, type) {
 	$("#color-hue").css("background", rgb);
     
 }
+
+// Open Colour Dropper 
+function openDropper() {
+  var resultElement = $("dropper-box").attr("value");
+
+  if (!window.EyeDropper) {
+    resultElement = 'Your browser does not support the EyeDropper API';
+    return;
+  }
+
+  const eyeDropper = new EyeDropper();
+  const abortController = new AbortController();
+
+  eyeDropper.open().then(result => {
+    resultElement = result.sRGBHex;
+    var rgb = hexToRgb(result.sRGBHex);
+    convertToColorPicker(rgb.r, rgb.g, rgb.b);
+    updateHighlights(result.sRGBHex);
+    updateValues(result.sRGBHex, "HEX");
+  }).catch(e => {
+    resultElement = e;
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
