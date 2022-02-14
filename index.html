@@ -26,15 +26,15 @@
 	<main>
 		<div id="center-area">
 			<h1 class="no-select">baxter's essential<br />colour tools™</h1>
-			<br /><br /><br />
+			<br/><br/><br/>
 
 			<input id="hex-box" class="selection-box" type="text" placeholder="enter a hex code"></input>
 			<p class="else-text no-select">or</p>
-			<div id="rgb-box">
-				<input id="red-box" min="0" class="selection-rgb-box" type="number" placeholder="red"></input>
-				<input id="green-box" min="0" class="selection-rgb-box" type="number" placeholder="green"></input>
-				<input id="blue-box" min="0" class="selection-rgb-box" type="number" placeholder="blue"></input>
-			</div>
+			<form id="rgb-box">
+				<input id="red-box" min="0" max="255" class="selection-rgb-box" type="number" placeholder="red"></input>
+				<input id="green-box" min="0" max="255" class="selection-rgb-box" type="number" placeholder="green"></input>
+				<input id="blue-box" min="0" max="255" class="selection-rgb-box" type="number" placeholder="blue"></input>
+			</form>
 			<p class="else-text no-select">or</p>
 			<div id="pallet-box" class="selection-box">
 				<input type="range" step="1" min="0" max="360" value="0" id="rainbow-slider"></input>
@@ -47,7 +47,9 @@
 			</div>
 			<p class="else-text no-select">or</p>
 			<input id="dropper-box" type="button" value="open colour dropper"></input>
-			<br /><br /><br />
+			<p class="else-text no-select">or</p>
+			<input type="file" id="image-box" class="selection-box" value="drag or select image here"></input>
+			<br/><br/><br/>
 			<p class="step-title no-select">here you go...</p>
 			<br />
 			<div class="result-box no-select" id="text-color">
@@ -60,7 +62,7 @@
 				<div class="color-palette-color" id="color-box-4"></div>
 				<div class="color-palette-color" id="color-box-5"></div>
 			</div>
-			<br /><br /><br /><br />
+			<br/><br/><br/><br/>
 		</div>
 	</main>
 

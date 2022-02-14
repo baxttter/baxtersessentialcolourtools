@@ -100,11 +100,6 @@ $(document).ready(() => {
 			$("#color-container").data('clicked', true);
 			updateColorSlider();
 		},
-		// Mobile Support
-		touchstart: () => {
-			$("#color-container").data('clicked', true);
-			updateColorSlider();
-		},
 	});
 
 	$(document).on({
@@ -122,25 +117,10 @@ $(document).ready(() => {
 				updateColorSlider();
 			}
 		},
-
-		// Mobile Support
-		touchmove: () => {
-			if ($("#color-container").data('clicked')) {
-				updateColorSlider();
-			}
-		},
-
-		touchend: () => {
-			$("#color-container").data('clicked', false);
-		},
-
-		touchcancel: () => {
-			$("#color-container").data('clicked', false);
-		},
 	});
 });
 
-// Color Pallete Generator
+// Color Palette Generator
 function generateColorPalette(...rgb) {
 	const HSL = rgbToHSL(...rgb); // Returns array
 
@@ -174,8 +154,8 @@ function convertToColorPicker(...rgb) { // Takes RGB colours
 	const colorPercentageY = 100 - rgbToHSV(...rgb).v; // Has to be inverted
 
 	// Calculate Picker Position | Reverse % back into offset number
-	xPos = ((colorPercentageX / 100) * ($("#color-container").width() - 20));
-	yPos = ((colorPercentageY / 100) * ($("#color-container").height() - 20));
+	let xPos = ((colorPercentageX / 100) * ($("#color-container").width() - 20));
+	let yPos = ((colorPercentageY / 100) * ($("#color-container").height() - 20));
 
 	// Update Picker Position
 	$("#color-picker").css("transform", `translate(${xPos}px, ${yPos}px)`);
@@ -184,8 +164,8 @@ function convertToColorPicker(...rgb) { // Takes RGB colours
 // Color slider/picker functionality
 function updateColorSlider() {
 	// Get offset amount
-	var xPos = event.pageX - $("#color-container").offset().left;
-	var yPos = event.pageY - $("#color-container").offset().top;
+	let xPos = event.pageX - $("#color-container").offset().left;
+	let yPos = event.pageY - $("#color-container").offset().top;
 	const pickerSize = 20;
 
 	// Keep picker within bounds
@@ -291,7 +271,7 @@ function openDropper() {
 	});
 }
 
-document.getElementById("dropper-box").addEventListener("click", () => openDropper());
+$("#dropper-box").click(() => openDropper());
 
 // Convert Hex code to RGB
 

@@ -687,6 +687,20 @@ input[type="range"]::-webkit-slider-runnable-track {
 	align-items: unset;
 }
 
+#image-box {
+	color: rgba(117, 117, 117, 1);
+	font-size: 30px;
+	text-decoration: none;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 110px;
+	border-style: dashed;
+	cursor: default;
+	-webkit-appearance: none;
+}
+
 #dropper-box:hover {
 	background-color: rgba(255, 255, 255, 0.2);
 	color: rgba(255, 255, 255, 0.6);
