@@ -10,26 +10,32 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+	<meta charset="utf-8">
 	<title>baxter's essential colour tools™</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css">
+	<!-- JQuery Link -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<!-- JavaScript Link -->
+	<script src="main.js" defer></script>
 </head>
 
 <body>
-	<div id="center-container">
+	<main>
 		<div id="center-area">
-			<p id="header" class="noSelect">baxter's essential<br/>colour tools™</p>
-			<br/><br/><br/>
+			<h1 class="no-select">baxter's essential<br />colour tools™</h1>
+			<br /><br /><br />
 
 			<input id="hex-box" class="selection-box" type="text" placeholder="enter a hex code"></input>
-			<p class="else-text noSelect">or</p>
+			<p class="else-text no-select">or</p>
 			<div id="rgb-box">
 				<input id="red-box" min="0" class="selection-rgb-box" type="number" placeholder="red"></input>
 				<input id="green-box" min="0" class="selection-rgb-box" type="number" placeholder="green"></input>
 				<input id="blue-box" min="0" class="selection-rgb-box" type="number" placeholder="blue"></input>
 			</div>
-			<p class="else-text noSelect">or</p>
+			<p class="else-text no-select">or</p>
 			<div id="pallet-box" class="selection-box">
 				<input type="range" step="1" min="0" max="360" value="0" id="rainbow-slider"></input>
 				<div id="color-container">
@@ -39,40 +45,33 @@
 					<div id="color-picker"></div>
 				</div>
 			</div>
-			<p class="else-text noSelect">or</p>
-			<input id="dropper-box" type="button" value="open colour dropper" onclick="openDropper();"></input>
-			<br/><br/><br/>
-			<p class="step-title noSelect">here you go...</p>
-			<br/>
-			<div class="result-box noSelect" id="text-color">
+			<p class="else-text no-select">or</p>
+			<input id="dropper-box" type="button" value="open colour dropper"></input>
+			<br /><br /><br />
+			<p class="step-title no-select">here you go...</p>
+			<br />
+			<div class="result-box no-select" id="text-color">
 				<p class="final-color" id="black-or-white">no colour selected</p>
 			</div>
-			<div class="result-box noSelect" id="color-palette">
+			<div class="result-box no-select" id="color-palette">
 				<div class="color-palette-color" id="color-box-1"></div>
 				<div class="color-palette-color" id="color-box-2"></div>
 				<div class="color-palette-color" id="color-box-3"></div>
 				<div class="color-palette-color" id="color-box-4"></div>
 				<div class="color-palette-color" id="color-box-5"></div>
 			</div>
-			<br/><br/><br/><br/>
+			<br /><br /><br /><br />
 		</div>
-	</div>
+	</main>
 
-<div id="footer">
-	<div id="footer-center-area" class="noSelect">
-		<p class="footer-text">Copyright © 2022 Baxter Kemp</p>
-		<p class="footer-text" style="padding-top: 10px;">All rights reserved.</p>
-		<p class="footer-text" style="padding-top: 20px;">v1.0</p>
-	</div>
-</div>
-
-
-<!-- JQuery Link -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- JavaScript Link -->
-<script src="main.js"></script>
+	<footer>
+		<div id="footer-center-area" class="no-select">
+			<p class="footer-text">Copyright © 2022 Baxter Kemp</p>
+			<p class="footer-text" style="padding-top: 10px;">All rights reserved.</p>
+			<p class="footer-text" style="padding-top: 20px;">v1.0.1</p>
+		</div>
+	</footer>
 
 </body>
+
 </html>
-
-
