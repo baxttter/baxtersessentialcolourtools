@@ -1,15 +1,15 @@
 <h1 align="center">baxter's essential colour tools™</h1>
 
 ## ✨ Summary
-A simple web application that contains many of Baxter's colour tools that he thinks are handy and very essential.
+A simple universally native desktop application that contains many of Baxter's colour tools that he thinks are handy and very essential.
 
 *baxter's essential colour tools™*, is still being developed and is not yet complete...
 
 ## 🚀 Demo
 
-*baxter's essential colour tools™* can be found [here!](https://baxttter.github.io/baxtersessentialcolourtools/ "baxter's essential colour tools™")
+*baxter's essential colour tools™* utilises Neutralinojs to build as a desktop application on every platform.
 
-It is also possible to package *baxter's essential colour tools™* as an electron app! 
+Demo Coming Soon...
 
 ## ⭐️ Features
 
@@ -22,6 +22,7 @@ It is also possible to package *baxter's essential colour tools™* as an electr
 + Should my text be black or white?
 + Color Picker Support
 + Color Pallete Generator
++ Native Application for every OS
 
 #### 📝 Planned
 
