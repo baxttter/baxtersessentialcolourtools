@@ -118,6 +118,7 @@ $(document).ready(() => {
 			}
 		},
 	});
+
 });
 
 // Color Palette Generator

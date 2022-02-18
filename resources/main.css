@@ -37,6 +37,16 @@ html {
 	background-color: black;
 }
 
+#github-button {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+#github-button:hover {
+	text-decoration: underline;
+}
+
 body {
 	color: white;
 	margin-left: 13px;

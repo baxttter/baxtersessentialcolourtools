@@ -1,6 +1,6 @@
 {
-  "applicationId": "js.neutralino.sample",
-  "version": "1.0.0",
+  "applicationId": "com.baxter.baxtersessentialcolourtools",
+  "version": "1.1.0",
   "defaultMode": "window",
   "port": 0,
   "documentRoot": "/resources/",
@@ -16,18 +16,6 @@
     "app.*",
     "os.*"
   ],
-  "globalVariables": {
-    "TEST1": "Hello",
-    "TEST2": [
-      2,
-      4,
-      5
-    ],
-    "TEST3": {
-      "value1": 10,
-      "value2": {}
-    }
-  },
   "modes": {
     "window": {
       "title": "baxtersessentialcolourtools",
