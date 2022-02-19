@@ -102,6 +102,7 @@ main {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	transition: 0.2s;
 }
 
 #center-area {
@@ -707,8 +708,12 @@ input[type="range"]::-webkit-slider-runnable-track {
 	justify-content: center;
 	height: 110px;
 	border-style: dashed;
-	cursor: default;
+	cursor: pointer;
 	-webkit-appearance: none;
+}
+
+#image-box-input {
+	display: none;
 }
 
 #dropper-box:hover {

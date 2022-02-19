@@ -1,41 +1,19 @@
-// This is just a sample app. You can structure your Neutralinojs app code as you wish.
-// This example app is written with vanilla JavaScript and HTML.
-// Feel free to use any frontend framework you like :)
-// See more details: https://neutralino.js.org/docs/how-to/use-a-frontend-library
 
-function setTray() {
-    if(NL_MODE != "window") {
-        console.log("INFO: Tray menu is only available in the window mode.");
-        return;
+window.myApp = {
+    openDocs: () => {
+        Neutralino.os.open('https://github.com/baxttter/baxtersessentialcolourtools');
+    },
+    openFile: () => {
+        $("main").css("opacity", "0.3");
+
+        // i need this to load the image
+        let entries = await Neutralino.os.showOpenDialog("Please Select an Image", {
+            filters: [
+                {name: 'Images', extensions: ['jpg', 'png']}
+            ]       
+        });
+        $("#image-box").text(entries[0]);
+
     }
-    let tray = {
-        icon: "/resources/icons/trayIcon.png",
-        menuItems: [
-            {id: "QUIT", text: "Quit"}
-        ]
-    };
-    Neutralino.os.setTray(tray);
-}
-
-function onTrayMenuItemClicked(event) {
-    switch(event.detail.id) {
-        case "QUIT":
-            Neutralino.app.exit();
-            break;
-    }
-}
-
-function onWindowClose() {
-    Neutralino.app.exit();
-}
-
+};
 Neutralino.init();
-
-Neutralino.events.on("trayMenuItemClicked", onTrayMenuItemClicked);
-Neutralino.events.on("windowClose", onWindowClose);
-
-if(NL_OS != "Darwin") { // TODO: Fix https://github.com/neutralinojs/neutralinojs/issues/615
-    setTray();
-}
-
-showInfo();

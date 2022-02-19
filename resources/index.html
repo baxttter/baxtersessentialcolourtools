@@ -16,10 +16,6 @@
 	<title>baxter's essential colour tools™</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css">
-	<!-- JQuery Link -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-	<!-- JavaScript Link -->
-	<script src="main.js" defer></script>
 </head>
 
 <body>
@@ -46,9 +42,7 @@
 				</div>
 			</div>
 			<p class="else-text no-select">or</p>
-			<input id="dropper-box" type="button" value="open colour dropper"></input>
-			<p class="else-text no-select">or</p>
-			<input type="file" id="image-box" class="selection-box" value="drag or select image here"></input>
+			<div class="selection-box" id="image-box" onclick="window.myApp.openFile();">drag or choose an image</div>
 			<br/><br/><br/>
 			<p class="step-title no-select">here you go...</p>
 			<br />
@@ -70,10 +64,16 @@
 		<div id="footer-center-area" class="no-select">
 			<p class="footer-text">Copyright © 2022 Baxter Kemp</p>
 			<p class="footer-text" style="padding-top: 10px;">All rights reserved.</p>
-			<p class="footer-text" style="padding-top: 20px;">v1.1 • <a id="github-button" href="https://github.com/baxttter/baxtersessentialcolourtools">Github</a></p>
+			<p class="footer-text" style="padding-top: 20px;">v1.1 • <a id="github-button" onclick="window.myApp.openDocs();">Github</a></p>
 		</div>
 	</footer>
 
+	<!-- JQuery Link -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<!-- JavaScript Link -->
+	<script src="main.js" defer></script>
+	<script src="js/neutralino.js" defer></script>
+	<script src="js/main.js" defer></script>
 </body>
 
 </html>
