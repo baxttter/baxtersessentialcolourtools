@@ -20,6 +20,9 @@ html {
 	background-color: black;
 }
 
+.button::hover {
+	text-decoration: underline;
+}
 .no-select {
 	text-decoration: none;
 	-webkit-user-drag: none;
