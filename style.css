@@ -1,0 +1,73 @@
+/*
+//			Created by Baxter Kemp
+//			in 2022
+//	
+//			Feel free to use any of the below code.
+//			No need to ask for permission!
+//
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+	font-family: system-ui, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	background-color: black;
+}
+
+.no-select {
+	text-decoration: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-khtml-user-drag: none;
+	-khtml-user-select: none;
+	-moz-user-drag: none;
+	-moz-user-select: none;
+	-ms-user-drag: none;
+	-ms-user-select: none;
+	-o-user-drag: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	cursor: default;
+}
+
+.title, .subtitle, .sectionTitle, .bodyText {
+	color: white;
+}
+
+.title {
+	font-size: 50px;
+
+}
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+.centerSection {
+	width: 800px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.subtitle {
+	margin-top: 70px;
+	opacity: 0.8;
+}
+
+.sectionTitle {
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+#1.1 {
+	transition: 2s;
+	display: block;
+}

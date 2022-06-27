@@ -10,8 +10,12 @@ let pickerXPer = 100;
 let pickerYPer = 0;
 let pickerYPerInverse = 100;
 
+let colors = $.ajax({type: "GET", url: "colors.csv", async: false}).responseText;
+const colorsArray = $.csv.toObjects(colors);
+
 // Called when page is loaded
 $(document).ready(() => {
+
 	// Move Cursor to right at start
 	$("#color-picker").css("transform", `translateX(${$("#color-container").width() - 20}px)`);
 	$("#color-picker").css("background-color", "red");
@@ -80,6 +84,61 @@ $(document).ready(() => {
 		}
 	});
 
+	// ------------ B I N A R Y ------------- //
+	$(".binary-selection-box").on("input click", () => {
+
+		// Don't allow special characters
+		$(".binary-selection-box").val((i, v) => v.replace(/[^01]/gi, ''));
+		
+		// Loop through bytes
+		for (let i = 1; i < 7; i++) {
+
+			// Get input number
+			let binaryVal = $(`#binary-${i}`).val();
+
+			// Convert input from base 2 (Binary) to base 10 (Int)
+			let byteInt = parseInt(binaryVal, 2);
+		
+			// Change binary-HEX preview 
+			$(`#binary-${i}-conv`).text(byteInt.toString(16).toUpperCase());
+
+			// Make sure NaN is replaced with '0'
+			if ($(`#binary-${i}-conv`).text() == "NAN") {
+				$(`#binary-${i}-conv`).text("0");
+			}
+		}
+
+		// Whole byte completed
+		if ($("#binary-1").val() && $("#binary-2").val() && $("#binary-3").val() && $("#binary-4").val() && $("#binary-5").val() && $("#binary-6").val()) {
+			
+			// Create HEX
+			let hex = "";
+
+			// Loop through bytes
+			for (let i = 1; i < 7; i++) {
+				hex += $(`#binary-${i}-conv`).text();
+			}
+
+			// Add hash
+			hex = "#" + hex;
+
+			const RGBArray = hexToRGB(hex);
+
+			// Update Everything | HAS TO BE IN THIS ORDER!!
+			convertToColorPicker(RGBArray.r, RGBArray.g, RGBArray.b);
+			updateHighlights(hex);
+			updateValues(hex, "pleaseDontUpdateBinary");
+			//updateValues(hex, "HEX");
+		}
+	});
+
+	// Add extra zeros
+	$(".binary-selection-box").focusout( () => {
+		for (let i = 0; i < 6; i++) {
+			$(`#binary-${(i + 1)}`).val($(`#binary-${(i + 1)}`).val().padStart(4, '0'));
+		}
+	});
+
 	// ------------ R A I N B O W  S L I D E R  ------------- //
 	$("#rainbow-slider").on("input", () => {
 		const colorArray = hsvToRGB($("#rainbow-slider").val(), (pickerXPer / 100), (pickerYPerInverse / 100));
@@ -110,6 +169,7 @@ $(document).ready(() => {
 			$("*").data('cursor', "default");
 
 			$("#color-container").data('clicked', false);
+			updateValues($("#hex-box").val(), "HEX");
 		},
 
 		mousemove: () => {
@@ -117,6 +177,11 @@ $(document).ready(() => {
 				updateColorSlider();
 			}
 		},
+	});
+
+	$(".color-palette-color").on("click", function() {
+		let position = $(this).attr('id').charAt($(this).attr('id').length - 1);
+		copyToClipboard("#" + $(this).attr('id') + " > div > p");
 	});
 
 });
@@ -142,6 +207,18 @@ function generateColorPalette(...rgb) {
 		} else {
 			$(`#color-box-${i}`).css("background", `hsl(${$("#rainbow-slider").val()}, ${Math.ceil(HSL[1] * 100)}%, ${colorPalette[i]}%)`);
 		}
+
+		let rgbString = $(`#color-box-${i}`).css("background-color")
+		rgbString = rgbString.replace(/[^\d,]/g, '').split(',');
+
+		let luminosity2 = (((0.299 * rgbString[0]) + (0.587 * rgbString[1]) + (0.114 * rgbString[2])) / 255);
+
+		if (luminosity2 > 0.5) { // Black Text
+			$(`#color-box-${i}`).css("color", "black");
+		} else { // White Text
+			$(`#color-box-${i}`).css("color", "white");
+		}
+		$(`#color-box-${i} > div > p`).text("#" + rgbToHEX(rgbString[0]) + rgbToHEX(rgbString[1]) + rgbToHEX(rgbString[2]) );
 	}
 }
 
@@ -196,13 +273,19 @@ function updateColorSlider() {
 
 	// Update
 	updateHighlights(`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`);
-	updateValues(rgb, "RGB");
+	updateValues(rgb, "RGBbutDontUpdateName");
 }
 
 // Update Color Highlights
 function updateHighlights(colour) {
+	
+	// Color picker
 	["#text-color", "#color-picker"].forEach(el => $(el).css("background-color", colour));
-	["#text-color", ".selection-box", ".selection-rgb-box, #dropper-box"].forEach(el => $(el).css("border-color", colour));
+
+	// Element outlines
+	["#text-color", ".selection-box", ".selection-rgb-box, #dropper-box", ".binary-selection-box"].forEach(el => $(el).css("border-color", colour));
+
+	// Text stuff
 	$("#black-or-white").css("font-size", 40);
 	$("#black-or-white").css("font-weight", "bold");
 	$("#dropper-box").css("color", "white");
@@ -212,15 +295,24 @@ function updateHighlights(colour) {
 function updateValues(colour, type) {
 	// Convert every value to RGB
 	let red, green, blue;
+
 	if (type === "HEX") {
 		red = hexToRGB(colour).r;
 		green = hexToRGB(colour).g;
 		blue = hexToRGB(colour).b;
 	} else if (type === "RGB") {
 		[red, green, blue] = colour;
+	} else if (type === "pleaseDontUpdateBinary") {
+		red = hexToRGB(colour).r;
+		green = hexToRGB(colour).g;
+		blue = hexToRGB(colour).b;		
+	} else if (type === "RGBbutDontUpdateName") {
+		[red, green, blue] = colour;
 	}
 
+	$(".color-palette-color").css("transition", "unset");
 	generateColorPalette(red, green, blue);
+	$(".color-palette-color").css("transition", "0.2s");
 
 	// Calculate Luminosity from RGB values
 	const luminosity = (((0.299 * red) + (0.587 * green) + (0.114 * blue)) / 255);
@@ -241,12 +333,51 @@ function updateValues(colour, type) {
 	$("#blue-box").val(blue);
 
 	// Fill in HEX values
-	$("#hex-box").val(`#${rgbToHEX($("#red-box").val())}${rgbToHEX($("#green-box").val())}${rgbToHEX($("#blue-box").val())}`);
+	let hex = `#${rgbToHEX($("#red-box").val())}${rgbToHEX($("#green-box").val())}${rgbToHEX($("#blue-box").val())}`;
+	$("#hex-box").val(hex);
+
+	// Fill in Binary values
+	if (type !== "pleaseDontUpdateBinary") {
+		let hexWithoutHash = hex.substring(1);
+		for (let i = 0; i < 6; i++) {
+
+			// Convert Base 16 (HEX) to Base 10 (Int)
+			intValue = parseInt(hexWithoutHash.charAt(i), 16);
+
+			// Convert Base 10 (Int) to Base 2 (Binary)
+			if ($("*:focus").attr("id") != (`binary-${i}`)) {
+				$(`#binary-${(i + 1)}`).val((intValue.toString(2)).padStart(4, '0'));
+			}
+
+			// Update Binary to HEX preview
+			$(`#binary-${(i + 1)}-conv`).text(hexWithoutHash.charAt(i).toUpperCase());
+
+		}
+	}
 
 	// Update Color Picker Background
 	const rgbArray = hslToRGB($("#rainbow-slider").val(), 1, 0.5);
 	const rgb = `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;
 	$("#color-hue").css("background", rgb);
+
+	// Update color name value and color
+	if (type !== "RGBbutDontUpdateName") {
+		for (let i = 0; i < colorsArray.length; i++) {
+			if (colorsArray[i].hex == $("#hex-box").val()) {
+				$("#final-name").css("color", "white");
+				$("#final-name").text(colorsArray[i].name);
+				console.log(colorsArray[i].name);
+				$("#color-name").css("border-color", `rgb(${red}, ${green}, ${blue})`);
+				break;
+			} else {
+				$("#final-name").css("color", "#757575");
+				$("#final-name").text("no color name found");
+				$("#color-name").css("border-color", `rgba(255, 255, 255, 0.3)`);
+			}
+		}
+	}
+
+
 }
 
 // Open Colour Dropper
@@ -378,4 +509,12 @@ function rgbToHSV(...rgb) {
 		s: percentRoundFn(s * 100),
 		v: percentRoundFn(v * 100),
 	};
+}
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
 }

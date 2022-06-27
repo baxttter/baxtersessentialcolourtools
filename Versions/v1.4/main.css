@@ -89,6 +89,41 @@ h1 {
 	height: 75px;
 }
 
+.binary-selection-box {
+	width: 100%;
+	height: 75px;
+	text-align: center;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-radius: 14px;
+	background-color: black;
+	color: white;
+	font: inherit;
+	font-size: 22px;
+	text-decoration: none;
+	font-weight: 500;
+	cursor: text;
+	margin-left: -3px;
+	margin-top: -3px;
+}
+
+#binary-box {
+	width: calc(100% - 50px);
+	height: 75px;
+	display: flex;
+}
+
+.binary-container {
+	width: 16.66%;
+}
+
+.binary-container > p {
+	margin-top: -25px;
+	margin-right: 5px;
+	text-align: right;
+	opacity: 0.35;
+	font-weight: 600;
+}
+
 #rgb-box {
 	display: flex;
 	width: calc(100% - 50px);
@@ -135,7 +170,9 @@ main {
 .step-title {
 	font-size: 28px;
 	font-weight: bold;
-	color: white;
+	color: rgba(255, 255, 255, 0.4);
+	text-align: left;
+	width: calc(100% - 50px);
 }
 
 .result-box {
@@ -267,7 +304,7 @@ input:focus {
 	outline: none;
 }
 
-input[type="number"]::-webkit-inner-spin-button {
+.input-buttons[type="number"]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	width: 28px;
 	height: 55px;
@@ -286,7 +323,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	background-size: cover;
 }
 
-input[type="number"]::-webkit-inner-spin-button:hover {
+.input-buttons[type="number"]::-webkit-inner-spin-button:hover {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -680,6 +717,44 @@ input[type="range"]::-webkit-slider-runnable-track {
 .color-palette-color {
 	height: 77px;
 	width: calc(100% / 5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+	transition: 0.2s;
+}
+
+#color-name {
+	margin-top: 20px;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.color-palette-color:hover > div > p {
+	opacity: 1;
+	transform: translateY(-5px);
+	cursor: pointer;
+}
+
+.color-palette-color:hover > .color-palette-dim {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.color-palette-text {
+	opacity: 0;
+	transition: 0.2s;
+	padding-top: 6px;
+}
+
+.color-palette-dim {
+	background-color: rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	transition: 0.2s;
+	width: 100%;
+	height: 77px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #dropper-box {
@@ -698,25 +773,38 @@ input[type="range"]::-webkit-slider-runnable-track {
 	align-items: unset;
 }
 
-#image-box {
-	color: rgba(117, 117, 117, 1);
-	font-size: 30px;
-	text-decoration: none;
-	font-weight: 500;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 110px;
-	border-style: dashed;
-	cursor: pointer;
-	-webkit-appearance: none;
+#image-box-container {
+	height: 200px;
 }
 
 #image-box-input {
 	display: none;
 }
 
+#image-box {
+	width: 100%;
+	display: none;
+}
+
+#image-upload-text {
+	color: rgba(117, 117, 117, 1);
+	font-size: 30px;
+	text-decoration: none;
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	height: 110px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  	width: calc(100% - 20px - 6px);
+  	display: inline-block;	
+  	line-height: 110px;
+  	border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
 #dropper-box:hover {
 	background-color: rgba(255, 255, 255, 0.2);
 	color: rgba(255, 255, 255, 0.6);
 }
+

@@ -1,0 +1,137 @@
+<!--
+//
+//		Created by Baxter Kemp
+//		in 2022
+//	
+//		Feel free to use any of the below code.
+//		No need to ask for permission!
+//
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>baxter's essential colour tools™</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<main>
+		<div id="center-area">
+			<h1 class="no-select">baxter's essential<br />colour tools™</h1>
+			<br/><br/><br/>
+
+			<!-- I N P U T -->
+			<p class="step-title no-select" style="padding-bottom: 15px;">Input</p>
+			<input id="hex-box" class="selection-box" type="text" placeholder="enter a hex code"></input>
+			<p class="else-text no-select">or</p>
+			<form id="rgb-box">
+				<input id="red-box" min="0" max="255" class="selection-rgb-box input-buttons" type="number" placeholder="red"></input>
+				<input id="green-box" min="0" max="255" class="selection-rgb-box input-buttons" type="number" placeholder="green"></input>
+				<input id="blue-box" min="0" max="255" class="selection-rgb-box input-buttons" type="number" placeholder="blue"></input>
+			</form>
+			<p class="else-text no-select">or</p>
+			<div id="pallet-box" class="selection-box">
+				<input type="range" step="1" min="0" max="360" value="0" id="rainbow-slider"></input>
+				<div id="color-container">
+					<div id="color-hue" class="color-overlay"></div>
+					<div id="color-saturation" class="color-overlay"></div>
+					<div id="color-black" class="color-overlay"></div>
+					<div id="color-picker"></div>
+				</div>
+			</div>
+			<p class="else-text no-select">or</p>
+			<form id="binary-box">
+				<div class="binary-container" style="margin-right: 15px">
+					<input id="binary-1" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-1-conv" class="no-select">0</p>
+				</div>
+				<div class="binary-container" style="margin-right: 15px">
+					<input id="binary-2" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-2-conv" class="no-select">0</p>
+				</div>
+				<div class="binary-container" style="margin-right: 15px">
+					<input id="binary-3" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-3-conv" class="no-select">0</p>
+				</div>
+				<div class="binary-container" style="margin-right: 15px">
+					<input id="binary-4" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-4-conv" class="no-select">0</p>
+				</div>
+				<div class="binary-container" style="margin-right: 15px">
+					<input id="binary-5" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-5-conv" class="no-select">0</p>
+				</div>
+				<div class="binary-container">
+					<input id="binary-6" class="binary-selection-box" placeholder="0000" maxlength="4"></input>
+					<p id="binary-6-conv" class="no-select">0</p>
+				</div>
+			</form>
+			<p class="else-text no-select">or</p>
+			<div class="selection-box" id="image-box" onclick="window.myApp.openFile();">drag or choose an image</div>
+			<br/><br/><br/>
+
+			<!-- O U T P U T -->
+			<p class="step-title no-select">Output</p>
+			<br />
+			<div class="result-box no-select" id="text-color">
+				<p class="final-color" id="black-or-white">no colour selected</p>
+			</div>
+			<div class="result-box no-select" id="color-palette">
+				<div class="color-palette-color" id="color-box-1">
+					<div class="color-palette-dim">
+						<p class="color-palette-text">#123123</p>
+					</div>
+					
+				</div>
+				<div class="color-palette-color" id="color-box-2">
+					<div class="color-palette-dim">
+						<p class="color-palette-text">#123123</p>
+					</div>
+					
+				</div>
+				<div class="color-palette-color" id="color-box-3">
+					<div class="color-palette-dim">
+						<p class="color-palette-text">#123123</p>
+					</div>
+					
+				</div>
+				<div class="color-palette-color" id="color-box-4">
+					<div class="color-palette-dim">
+						<p class="color-palette-text">#123123</p>
+					</div>
+					
+				</div>
+				<div class="color-palette-color" id="color-box-5">
+					<div class="color-palette-dim">
+						<p class="color-palette-text">#123123</p>
+					</div>
+					
+				</div>
+			</div>
+			<div class="result-box no-select" id="color-name">
+				<p class="final-color" id="final-name">no color name</p>
+			</div>
+			<br/><br/><br/><br/>
+		</div>
+	</main>
+
+	<footer>
+		<div id="footer-center-area" class="no-select">
+			<p class="footer-text">Copyright © 2022 Baxter Kemp</p>
+			<p class="footer-text" style="padding-top: 10px;">All rights reserved.</p>
+			<p class="footer-text" style="padding-top: 20px;">v1.3 • <a id="github-button" onclick="window.myApp.openDocs();">Github</a></p>
+		</div>
+	</footer>
+
+	<!-- JQuery Link -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<!-- JavaScript Link -->
+	<script src="jquery-csv.js" defer></script>
+	<script src="main.js" defer></script>
+</body>
+
+</html>
