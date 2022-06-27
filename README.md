@@ -34,4 +34,4 @@ Demo Coming Soon...
 
 If you have found any issues, please submit an issue [here.](https://github.com/baxttter/baxtersessentialcolourtools/issues "Submit a issue")
 
-Feel free to create a pull request if you feel that *baxter's essential colour tools™* could use a extra feature you've created!
+Feel free to create a pull request if you feel that *baxter's essential colour tools™* could use an extra feature you've created!
