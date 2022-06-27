@@ -4,3 +4,4 @@
 .eslintrc.json
 neutralinojs.log
 *.log
+*.sublime-workspace
