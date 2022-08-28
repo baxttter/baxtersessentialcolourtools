@@ -10,15 +10,15 @@ let pickerXPer = 100;
 let pickerYPer = 0;
 let pickerYPerInverse = 100;
 
-let colors = $.ajax({type: "GET", url: "colors.csv", async: false}).responseText;
-const colorsArray = $.csv.toObjects(colors);
+let colours = $.ajax({type: "GET", url: "colours.csv", async: false}).responseText;
+const coloursArray = $.csv.toObjects(colours);
 
 // Called when page is loaded
 $(document).ready(() => {
 
 	// Move Cursor to right at start
-	$("#color-picker").css("transform", `translateX(${$("#color-container").width() - 20}px)`);
-	$("#color-picker").css("background-color", "red");
+	$("#colour-picker").css("transform", `translateX(${$("#colour-container").width() - 20}px)`);
+	$("#colour-picker").css("background-color", "red");
 
 	// ------------ H E X ------------- //
 	$("#hex-box").on("input", () => {
@@ -42,7 +42,7 @@ $(document).ready(() => {
 			const RGBArray = hexToRGB($("#hex-box").val());
 
 			// Update Everything | HAS TO BE IN THIS ORDER!!
-			convertToColorPicker(RGBArray.r, RGBArray.g, RGBArray.b);
+			convertToColourPicker(RGBArray.r, RGBArray.g, RGBArray.b);
 			updateHighlights($("#hex-box").val());
 			updateValues($("#hex-box").val(), "HEX");
 		}
@@ -76,9 +76,9 @@ $(document).ready(() => {
 			const rgbArray = [$("#red-box").val(), $("#green-box").val(), $("#blue-box").val()];
 			const rgb = (`rgb(${rgbArray})`);
 
-			convertToColorPicker(...rgbArray);
+			convertToColourPicker(...rgbArray);
 
-			// Update colors and fonts
+			// Update colours and fonts
 			updateHighlights(rgb);
 			updateValues(rgbArray, "RGB");
 		}
@@ -125,7 +125,7 @@ $(document).ready(() => {
 			const RGBArray = hexToRGB(hex);
 
 			// Update Everything | HAS TO BE IN THIS ORDER!!
-			convertToColorPicker(RGBArray.r, RGBArray.g, RGBArray.b);
+			convertToColourPicker(RGBArray.r, RGBArray.g, RGBArray.b);
 			updateHighlights(hex);
 			updateValues(hex, "pleaseDontUpdateBinary");
 			//updateValues(hex, "HEX");
@@ -141,23 +141,23 @@ $(document).ready(() => {
 
 	// ------------ R A I N B O W  S L I D E R  ------------- //
 	$("#rainbow-slider").on("input", () => {
-		const colorArray = hsvToRGB($("#rainbow-slider").val(), (pickerXPer / 100), (pickerYPerInverse / 100));
-		const colorRGB = `rgb(${colorArray})`;
+		const colourArray = hsvToRGB($("#rainbow-slider").val(), (pickerXPer / 100), (pickerYPerInverse / 100));
+		const colourRGB = `rgb(${colourArray})`;
 
 		// Get picker pos and convert to hsl
-		updateHighlights(colorRGB);
-		updateValues(colorArray, "RGB");
+		updateHighlights(colourRGB);
+		updateValues(colourArray, "RGB");
 	});
 
-	$("#color-container").on({
+	$("#colour-container").on({
 		mousedown: () => {
 			["user-drag", "user-select", "webkit-touch-callout", "webkit-tap-highlight-color"].forEach(
 				property => $("*").css(property, "none")
 			);
 			$("*").data('cursor', "pointer");
 
-			$("#color-container").data('clicked', true);
-			updateColorSlider();
+			$("#colour-container").data('clicked', true);
+			updateColourSlider();
 		},
 	});
 
@@ -168,26 +168,26 @@ $(document).ready(() => {
 			);
 			$("*").data('cursor', "default");
 
-			$("#color-container").data('clicked', false);
+			$("#colour-container").data('clicked', false);
 			updateValues($("#hex-box").val(), "HEX");
 		},
 
 		mousemove: () => {
-			if ($("#color-container").data('clicked')) {
-				updateColorSlider();
+			if ($("#colour-container").data('clicked')) {
+				updateColourSlider();
 			}
 		},
 	});
 
-	$(".color-palette-color").on("click", function() {
+	$(".colour-palette-colour").on("click", function() {
 		let position = $(this).attr('id').charAt($(this).attr('id').length - 1);
 		copyToClipboard("#" + $(this).attr('id') + " > div > p");
 	});
 
 });
 
-// Color Palette Generator
-function generateColorPalette(...rgb) {
+// Colour Palette Generator
+function generateColourPalette(...rgb) {
 	const HSL = rgbToHSL(...rgb); // Returns array
 
 	// Get Full Range of Lightness
@@ -199,73 +199,73 @@ function generateColorPalette(...rgb) {
 		fullArray.unshift(i);
 	}
 
-	// Display Color Palette
-	const colorPalette = [0, 10, 30, 50, 70, 90];
+	// Display Colour Palette
+	const colourPalette = [0, 10, 30, 50, 70, 90];
 	for (let i = 1; i < 6; i += 1) {
 		if (Math.ceil(HSL[1] * 100) > 80) {
-			$(`#color-box-${i}`).css("background", `hsl(${$("#rainbow-slider").val()}, ${Math.ceil(HSL[1] * 100) - 15}%, ${colorPalette[i]}%)`);
+			$(`#colour-box-${i}`).css("background", `hsl(${$("#rainbow-slider").val()}, ${Math.ceil(HSL[1] * 100) - 15}%, ${colourPalette[i]}%)`);
 		} else {
-			$(`#color-box-${i}`).css("background", `hsl(${$("#rainbow-slider").val()}, ${Math.ceil(HSL[1] * 100)}%, ${colorPalette[i]}%)`);
+			$(`#colour-box-${i}`).css("background", `hsl(${$("#rainbow-slider").val()}, ${Math.ceil(HSL[1] * 100)}%, ${colourPalette[i]}%)`);
 		}
 
-		let rgbString = $(`#color-box-${i}`).css("background-color")
+		let rgbString = $(`#colour-box-${i}`).css("background-color")
 		rgbString = rgbString.replace(/[^\d,]/g, '').split(',');
 
 		let luminosity2 = (((0.299 * rgbString[0]) + (0.587 * rgbString[1]) + (0.114 * rgbString[2])) / 255);
 
 		if (luminosity2 > 0.5) { // Black Text
-			$(`#color-box-${i}`).css("color", "black");
+			$(`#colour-box-${i}`).css("color", "black");
 		} else { // White Text
-			$(`#color-box-${i}`).css("color", "white");
+			$(`#colour-box-${i}`).css("color", "white");
 		}
-		$(`#color-box-${i} > div > p`).text("#" + rgbToHEX(rgbString[0]) + rgbToHEX(rgbString[1]) + rgbToHEX(rgbString[2]) );
+		$(`#colour-box-${i} > div > p`).text("#" + rgbToHEX(rgbString[0]) + rgbToHEX(rgbString[1]) + rgbToHEX(rgbString[2]) );
 	}
 }
 
 // Convert HEX/RGB to colour picker
-function convertToColorPicker(...rgb) { // Takes RGB colours
+function convertToColourPicker(...rgb) { // Takes RGB colours
 	// Update Slider
 	$("#rainbow-slider").val(rgbToHSL(...rgb)[0] * 360);
 
 	// Position of colour on grid (Percentage)
-	const colorPercentageX = rgbToHSV(...rgb).s;
-	const colorPercentageY = 100 - rgbToHSV(...rgb).v; // Has to be inverted
+	const colourPercentageX = rgbToHSV(...rgb).s;
+	const colourPercentageY = 100 - rgbToHSV(...rgb).v; // Has to be inverted
 
 	// Calculate Picker Position | Reverse % back into offset number
-	let xPos = ((colorPercentageX / 100) * ($("#color-container").width() - 20));
-	let yPos = ((colorPercentageY / 100) * ($("#color-container").height() - 20));
+	let xPos = ((colourPercentageX / 100) * ($("#colour-container").width() - 20));
+	let yPos = ((colourPercentageY / 100) * ($("#colour-container").height() - 20));
 
 	// Update Picker Position
-	$("#color-picker").css("transform", `translate(${xPos}px, ${yPos}px)`);
+	$("#colour-picker").css("transform", `translate(${xPos}px, ${yPos}px)`);
 }
 
-// Color slider/picker functionality
-function updateColorSlider() {
+// Colour slider/picker functionality
+function updateColourSlider() {
 	// Get offset amount
-	let xPos = event.pageX - $("#color-container").offset().left;
-	let yPos = event.pageY - $("#color-container").offset().top;
+	let xPos = event.pageX - $("#colour-container").offset().left;
+	let yPos = event.pageY - $("#colour-container").offset().top;
 	const pickerSize = 20;
 
 	// Keep picker within bounds
 	if (yPos < 0 + 10) {
 		yPos = 0 + 10;
-	} else if (yPos > ($("#color-container").height() - pickerSize) + 10) {
-		yPos = ($("#color-container").height() - pickerSize + 10);
+	} else if (yPos > ($("#colour-container").height() - pickerSize) + 10) {
+		yPos = ($("#colour-container").height() - pickerSize + 10);
 	}
 	if (xPos < 0 + 10) {
 		xPos = 0 + 10;
-	} else if (xPos > ($("#color-container").width() - pickerSize) + 10) {
-		xPos = ($("#color-container").width() - pickerSize + 10);
+	} else if (xPos > ($("#colour-container").width() - pickerSize) + 10) {
+		xPos = ($("#colour-container").width() - pickerSize + 10);
 	}
 	xPos -= 10;
 	yPos -= 10;
 
 	// Move Picker through CSS transformation into correct position
-	$("#color-picker").css("transform", `translate(${xPos}px, ${yPos}px)`);
+	$("#colour-picker").css("transform", `translate(${xPos}px, ${yPos}px)`);
 
 	// Turn offset into percentage
-	pickerXPer = Math.ceil(xPos / ($("#color-container").width() - pickerSize) * 100);
-	pickerYPer = Math.ceil(yPos / ($("#color-container").height() - pickerSize) * 100);
+	pickerXPer = Math.ceil(xPos / ($("#colour-container").width() - pickerSize) * 100);
+	pickerYPer = Math.ceil(yPos / ($("#colour-container").height() - pickerSize) * 100);
 	pickerYPerInverse = (100 - pickerYPer);
 
 	// Convert HSV to RGB
@@ -276,14 +276,14 @@ function updateColorSlider() {
 	updateValues(rgb, "RGBbutDontUpdateName");
 }
 
-// Update Color Highlights
+// Update Colour Highlights
 function updateHighlights(colour) {
 	
-	// Color picker
-	["#text-color", "#color-picker"].forEach(el => $(el).css("background-color", colour));
+	// Colour picker
+	["#text-colour", "#colour-picker"].forEach(el => $(el).css("background-color", colour));
 
 	// Element outlines
-	["#text-color", ".selection-box", ".selection-rgb-box, #dropper-box", ".binary-selection-box"].forEach(el => $(el).css("border-color", colour));
+	["#text-colour", ".selection-box", ".selection-rgb-box, #dropper-box", ".binary-selection-box"].forEach(el => $(el).css("border-colour", colour));
 
 	// Text stuff
 	$("#black-or-white").css("font-size", 40);
@@ -291,7 +291,7 @@ function updateHighlights(colour) {
 	$("#dropper-box").css("color", "white");
 }
 
-// Update Color Values
+// Update Colour Values
 function updateValues(colour, type) {
 	// Convert every value to RGB
 	let red, green, blue;
@@ -310,9 +310,9 @@ function updateValues(colour, type) {
 		[red, green, blue] = colour;
 	}
 
-	$(".color-palette-color").css("transition", "unset");
-	generateColorPalette(red, green, blue);
-	$(".color-palette-color").css("transition", "0.2s");
+	$(".colour-palette-colour").css("transition", "unset");
+	generateColourPalette(red, green, blue);
+	$(".colour-palette-colour").css("transition", "0.2s");
 
 	// Calculate Luminosity from RGB values
 	const luminosity = (((0.299 * red) + (0.587 * green) + (0.114 * blue)) / 255);
@@ -355,24 +355,24 @@ function updateValues(colour, type) {
 		}
 	}
 
-	// Update Color Picker Background
+	// Update Colour Picker Background
 	const rgbArray = hslToRGB($("#rainbow-slider").val(), 1, 0.5);
 	const rgb = `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;
-	$("#color-hue").css("background", rgb);
+	$("#colour-hue").css("background", rgb);
 
-	// Update color name value and color
+	// Update colour name value and colour
 	if (type !== "RGBbutDontUpdateName") {
-		for (let i = 0; i < colorsArray.length; i++) {
-			if (colorsArray[i].hex == $("#hex-box").val()) {
+		for (let i = 0; i < coloursArray.length; i++) {
+			if (coloursArray[i].hex == $("#hex-box").val()) {
 				$("#final-name").css("color", "white");
-				$("#final-name").text(colorsArray[i].name);
-				console.log(colorsArray[i].name);
-				$("#color-name").css("border-color", `rgb(${red}, ${green}, ${blue})`);
+				$("#final-name").text(coloursArray[i].name);
+				console.log(coloursArray[i].name);
+				$("#colour-name").css("border-color", `rgb(${red}, ${green}, ${blue})`);
 				break;
 			} else {
 				$("#final-name").css("color", "#757575");
-				$("#final-name").text("no color name found");
-				$("#color-name").css("border-color", `rgba(255, 255, 255, 0.3)`);
+				$("#final-name").text("no colour name found");
+				$("#colour-name").css("border-color", `rgba(255, 255, 255, 0.3)`);
 			}
 		}
 	}
@@ -395,7 +395,7 @@ function openDropper() {
 	eyeDropper.open().then(result => {
 		resultElement = result.sRGBHex;
 		const rgb = hexToRGB(result.sRGBHex);
-		convertToColorPicker(rgb.r, rgb.g, rgb.b);
+		convertToColourPicker(rgb.r, rgb.g, rgb.b);
 		updateHighlights(result.sRGBHex);
 		updateValues(result.sRGBHex, "HEX");
 	}).catch(e => {
