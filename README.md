@@ -20,14 +20,14 @@ Demo Coming Soon...
 + RGB to HEX
 + HEX to RGB
 + Should my text be black or white?
-+ Color Picker Support
-+ Color Pallete Generator
++ Colour Picker Support
++ Colour Pallete Generator
 + Native Application for every OS
 
 #### 📝 Planned
 
 + Image Support
-  + Average Color of Image
+  + Average Colour of Image
 + Does my colour work in dark mode?
 
 ## 🚨 Issues

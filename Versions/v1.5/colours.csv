@@ -72,6 +72,7 @@ blue_pigment,"Blue (Pigment)",#339,51,51,153
 blue_ryb,"Blue (Ryb)",#0247fe,2,71,254
 blue_sapphire,"Blue Sapphire",#126180,18,97,128
 blue_violet,"Blue-Violet",#8a2be2,138,43,226
+blurple,"Blurple",#7289da,114,137,218
 blush,"Blush",#de5d83,222,93,131
 bole,"Bole",#79443b,121,68,59
 bondi_blue,"Bondi Blue",#0095b6,0,149,182
@@ -344,7 +345,7 @@ gray,"Gray",#808080,128,128,128
 gray_asparagus,"Gray-Asparagus",#465945,70,89,69
 gray_html_css_gray,"Gray (Html/Css Gray)",#808080,128,128,128
 gray_x11_gray,"Gray (X11 Gray)",#bebebe,190,190,190
-green_color_wheel_x11_green,"Green (Color Wheel) (X11 Green)",#0f0,0,255,0
+green_colour_wheel_x11_green,"Green (Colour Wheel) (X11 Green)",#0f0,0,255,0
 green_crayola,"Green (Crayola)",#1cac78,28,172,120
 green_html_css_green,"Green (Html/Css Green)",#008000,0,128,0
 green_munsell,"Green (Munsell)",#00a877,0,168,119
@@ -448,7 +449,7 @@ light_taupe,"Light Taupe",#b38b6d,179,139,109
 light_thulian_pink,"Light Thulian Pink",#e68fac,230,143,172
 light_yellow,"Light Yellow",#ffffe0,255,255,224
 lilac,"Lilac",#c8a2c8,200,162,200
-lime_color_wheel,"Lime (Color Wheel)",#bfff00,191,255,0
+lime_colour_wheel,"Lime (Colour Wheel)",#bfff00,191,255,0
 lime_green,"Lime Green",#32cd32,50,205,50
 lime_web_x11_green,"Lime (Web) (X11 Green)",#0f0,0,255,0
 limerick,"Limerick",#9dc209,157,194,9
@@ -547,11 +548,11 @@ olive_drab_web_olive_drab_3,"Olive Drab (Web) (Olive Drab #3)",#6b8e23,107,142,3
 olivine,"Olivine",#9ab973,154,185,115
 onyx,"Onyx",#353839,53,56,57
 opera_mauve,"Opera Mauve",#b784a7,183,132,167
-orange_color_wheel,"Orange (Color Wheel)",#ff7f00,255,127,0
+orange_colour_wheel,"Orange (Colour Wheel)",#ff7f00,255,127,0
 orange_peel,"Orange Peel",#ff9f00,255,159,0
 orange_red,"Orange-Red",#ff4500,255,69,0
 orange_ryb,"Orange (Ryb)",#fb9902,251,153,2
-orange_web_color,"Orange (Web Color)",#ffa500,255,165,0
+orange_web_colour,"Orange (Web Colour)",#ffa500,255,165,0
 orchid,"Orchid",#da70d6,218,112,214
 otter_brown,"Otter Brown",#654321,101,67,33
 ou_crimson_red,"Ou Crimson Red",#900,153,0,0
@@ -831,7 +832,7 @@ vermilion_plochere,"Vermilion (Plochere)",#d9603b,217,96,59
 veronica,"Veronica",#a020f0,160,32,240
 violet,"Violet",#8f00ff,143,0,255
 violet_blue,"Violet-Blue",#324ab2,50,74,178
-violet_color_wheel,"Violet (Color Wheel)",#7f00ff,127,0,255
+violet_colour_wheel,"Violet (Colour Wheel)",#7f00ff,127,0,255
 violet_ryb,"Violet (Ryb)",#8601af,134,1,175
 violet_web,"Violet (Web)",#ee82ee,238,130,238
 viridian,"Viridian",#40826d,64,130,109

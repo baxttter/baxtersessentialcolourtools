@@ -182,11 +182,11 @@ main {
 	height: 77px;
 }
 
-#text-color {
+#text-colour {
 	border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
-.final-color {
+.final-colour {
 	font-size: 30px;
 	font-weight: 500;
 	color: #757575;
@@ -255,7 +255,7 @@ body::-webkit-scrollbar-thumb {
 	margin-bottom: 10px;
 }
 
-#color-container {
+#colour-container {
 	width: calc(100% - 20px);
 	height: 125px;
 	display: grid;
@@ -265,7 +265,7 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 }
 
-.color-overlay {
+.colour-overlay {
 	width: 100%;
 	height: 125px;
 	grid-row-start: 1;
@@ -273,19 +273,19 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 }
 
-#color-hue {
+#colour-hue {
 	background: red;
 }
 
-#color-saturation {
+#colour-saturation {
 	background: linear-gradient(90deg, #fff, transparent);
 }
 
-#color-black {
+#colour-black {
 	background: linear-gradient(0deg, #000, transparent);
 }
 
-#color-picker {
+#colour-picker {
 	width: 20px;
 	height: 20px;
 	border-radius: 5px;
@@ -708,13 +708,13 @@ input[type="range"]::-webkit-slider-runnable-track {
 	); /* Yes I know this is long. But its 100% accurate */
 }
 
-#color-palette {
+#colour-palette {
 	margin-top: 20px;
 	background-color: rgba(255, 255, 255, 0.1);
 	display: flex;
 }
 
-.color-palette-color {
+.colour-palette-colour {
 	height: 77px;
 	width: calc(100% / 5);
 	display: flex;
@@ -724,29 +724,29 @@ input[type="range"]::-webkit-slider-runnable-track {
 	transition: 0.2s;
 }
 
-#color-name {
+#colour-name {
 	margin-top: 20px;
 	border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
-.color-palette-color:hover > div > p {
+.colour-palette-colour:hover > div > p {
 	opacity: 1;
 	transform: translateY(-5px);
 	cursor: pointer;
 }
 
-.color-palette-color:hover > .color-palette-dim {
+.colour-palette-colour:hover > .colour-palette-dim {
 	opacity: 1;
 	cursor: pointer;
 }
 
-.color-palette-text {
+.colour-palette-text {
 	opacity: 0;
 	transition: 0.2s;
 	padding-top: 6px;
 }
 
-.color-palette-dim {
+.colour-palette-dim {
 	background-color: rgba(0, 0, 0, 0.2);
 	opacity: 0;
 	transition: 0.2s;
